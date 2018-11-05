@@ -1,0 +1,5 @@
+ELASTICSEARCH_URL = ''
+API_KEY = ''
+# For testing
+TESTING_ELASTICSEARCH_URL = ''
+TESTING = False

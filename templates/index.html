@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Address Book</title>
+  </head>
+  <body>
+      <h1>Welcome to Address Book API</h1>
+      <h2>Request format should be in JSON</h2>
+      <h2>Endpoints:</h2>
+      <h3>To query:</h3>
+      <h4>GET /contact?pageSize={}&page={}&query={}</h4>
+      <h3>To add a contact:</h3>
+      <h4>POST /contact</h4>
+      <h3>To get a contact:</h3>
+      <h4>GET /contact/{name}<h4/>
+      <h3>To update a contact:</h3>
+      <h4>PUT /contact/{name}<h4/>
+      <h3>To delete a contact:</h3>
+      <h4>DELETE /contact/{name}<h4/>
+      <h2>Allowed fields:</h2>
+      <h4>
+        name, first_name, middle_name, last_name, email_address,
+        website, home_phone, work_phone, mobile_phone, address, notes
+      </h4>
+  </body>
+</html>
