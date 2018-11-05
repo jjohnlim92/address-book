@@ -130,20 +130,6 @@ class Tests(unittest.TestCase):
             self.assertEqual({'mobile_phone' : '1234567890', 'name': 'john baker'}, \
             json.loads(get_contact('john baker')[0].data))
 
-    # Testing to ensure validity in arguments provided for query
-    def test_valid_query_arguments(self):
-        with self.ctx:
-            create_contact({'name' : 'john baker'})
-            create_contact({'name' : 'john bob'})
-            create_contact({'name' : 'john jones'})
-            create_contact({'name' : 'john jeter'})
-            # page is given while pageSize is not given. Should throw 400 error
-            try:
-                get_contact_query(None, 2, 'john')
-                raise AssertionError()
-            except HTTPException as err:
-                self.assertEqual(400, err.code)
-
 # Set failfast to True to test one at a time
 if __name__ == '__main__':
     unittest.main(failfast=True)
