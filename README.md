@@ -17,7 +17,7 @@
 ## Endpoints:
 &nbsp;&nbsp;**To query:**  
 &nbsp;&nbsp;&nbsp;&nbsp;GET /contact?pageSize={}&page={}&query={}  
-&nbsp;&nbsp;&nbsp;&nbsp;(e.g., "http://localhost:5000/contact?pageSize=10&page=1&query=jeffrey")  
+&nbsp;&nbsp;&nbsp;&nbsp;(e.g., curl -X GET "http://localhost:5000/contact?pageSize=10&page=1&query=jeffrey")  
 &nbsp;&nbsp;**To add a contact:**  
 &nbsp;&nbsp;&nbsp;&nbsp;POST /contact  
 &nbsp;&nbsp;&nbsp;&nbsp;(e.g., curl -X POST "http://localhost:5000/contact" -d '{"name": "jeffrey franklin", "work_phone": "1234567890"}')  
