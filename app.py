@@ -38,8 +38,8 @@ def handle_contact():
 
 # Returns an array of objects in JSON format based on request arguments
 def get_contact_query(pageSize, page, query):
-    # pageSize defaults to None and page defaults to 1 if not provided
-    pageSize = int (pageSize) if pageSize else None
+    # pageSize defaults to 10 and page defaults to 1 if not provided/invalid
+    pageSize = int (pageSize) if pageSize else 10
     page = int (page) if page else 1
     # Logically, you can't select a page without giving the size of a page
     if not pageSize and page != 1:
@@ -47,7 +47,7 @@ def get_contact_query(pageSize, page, query):
     # If query is not provided as an argument
     if not query:
         hits = es.search(index=APP_INDEX, doc_type="contact", \
-        filter_path=['hits.hits._source'])['hits']['hits']
+        filter_path=['hits.hits._source'], size=pageSize*page)['hits']['hits']
         # If pageSize is not provided, return all contacts
         if not pageSize:
             queried_contact_list = [contact['_source'] for contact in hits]
@@ -57,7 +57,7 @@ def get_contact_query(pageSize, page, query):
     # If query is provided as an argument
     else:
         hits = es.search(index=APP_INDEX, doc_type="contact", \
-        filter_path=['hits.hits._source'], body={"query": {"query_string" : {"query": query}}})['hits']['hits']
+        filter_path=['hits.hits._source'], size=pageSize*page, body={"query": {"query_string" : {"query": query}}})['hits']['hits']
         # If pageSize is provided, return corresponding contacts for page and pageSize
         if pageSize:
             queried_contact_list = [contact['_source'] for contact in hits][pageSize*page-pageSize:pageSize*page]
