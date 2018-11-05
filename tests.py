@@ -25,6 +25,8 @@ class Tests(unittest.TestCase):
 
     # After each test method deletes testing index
     def tearDown(self):
+        # Ensures TESTING is set to True before deleting index
+        self.assertEqual(True, config.TESTING)
         self.es.indices.delete('tests')
 
     # Just testing adding contacts

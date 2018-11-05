@@ -38,12 +38,10 @@ def handle_contact():
 
 # Returns an array of objects in JSON format based on request arguments
 def get_contact_query(pageSize, page, query):
-    # pageSize defaults to 10 and page defaults to 1 if not provided/invalid
+    # pageSize defaults to 10 and page defaults to 1 if not provided.
+    # Default error handler will throw error response if invalid arguments provided
     pageSize = int (pageSize) if pageSize else 10
     page = int (page) if page else 1
-    # Logically, you can't select a page without giving the size of a page
-    if not pageSize and page != 1:
-        abort(400, {'message': 'Must provide argument: pageSize'})
     # If query is not provided as an argument
     if not query:
         hits = es.search(index=APP_INDEX, doc_type="contact", \
