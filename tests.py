@@ -132,57 +132,6 @@ class Tests(unittest.TestCase):
             self.assertEqual({'mobile_phone' : '1234567890', 'name': 'john baker'}, \
             json.loads(get_contact('john baker')[0].data))
 
-    # ERROR:
-    # Traceback (most recent call last):
-    #   File "tests.py", line 145, in test_contact_query
-    #     json.loads(get_contact_query(None, None, None)[0].data))
-    #   File "/Users/jl/Documents/webDev/address-book/app.py", line 50, in get_contact_query
-    #     filter_path=['hits.hits._source'], size=pageSize*page)['hits']['hits']
-    # KeyError: 'hits'
-    # # Testing query functionality
-    # def test_contact_query(self):
-    #     with self.ctx:
-    #         create_contact({"name" : "david jeffers", "address": "1234 Cherry Lane"})
-    #         create_contact({"name" : "david heller", "address": "1234 Berry Lane"})
-    #         create_contact({"name" : "david ross", "address": "4321 Cherry Lane"})
-    #         create_contact({"name" : "david frank", "address": "100 Candy Lane"})
-    #         # If no arguments are provided, should return all contacts
-    #         self.assertEqual([{"address": "100 Candy Lane", "name": "david frank"}, \
-    #         {"address": "1234 Berry Lane", "name": "david heller"}, \
-    #         {"address": "1234 Cherry Lane", "name": "david jeffers"}, \
-    #         {"address": "4321 Cherry Lane", "name": "david ross"}], \
-    #         json.loads(get_contact_query(None, None, None)[0].data))
-    #         # Putting in 1234 for query argument should result in these 2 results
-    #         self.assertEqual([{"address": "1234 Berry Lane", "name": "david heller"}, \
-    #         {"address": "1234 Cherry Lane", "name": "david jeffers"}], \
-    #         json.loads(get_contact_query(None, None, '1234')[0].data))
-    #         # Putting in david for query argument should result in all 4 davids
-    #         self.assertEqual([{"address": "100 Candy Lane", "name": "david frank"}, \
-    #         {"address": "1234 Berry Lane", "name": "david heller"}, \
-    #         {"address": "1234 Cherry Lane", "name": "david jeffers"}, \
-    #         {"address": "4321 Cherry Lane", "name": "david ross"}], \
-    #         json.loads(get_contact_query(None, None, 'david')[0].data))
-    #         # Setting pageSize to 2 and page to 1. Should get first 2 contacts of prev
-    #         self.assertEqual([{"address": "100 Candy Lane", "name": "david frank"}, \
-    #         {"address": "1234 Berry Lane", "name": "david heller"}], \
-    #         json.loads(get_contact_query('2', '1', 'david')[0].data))
-    #         # Setting page to 2. Should get the other 2 contacts
-    #         self.assertEqual([{"address": "1234 Cherry Lane", "name": "david jeffers"}, \
-    #         {"address": "4321 Cherry Lane", "name": "david ross"}], \
-    #         json.loads(get_contact_query('2', '2', 'david')[0].data))
-    #         # Setting page to 3. Should get empty list
-    #         self.assertEqual([], \
-    #         json.loads(get_contact_query('2', '3', 'david')[0].data))
-    #         # Setting page to 1 and query to david, but no pageSize. pageSize will
-    #         # default to 10
-    #         self.assertEqual([{"address": "100 Candy Lane", "name": "david frank"}, \
-    #         {"address": "1234 Berry Lane", "name": "david heller"}, \
-    #         {"address": "1234 Cherry Lane", "name": "david jeffers"}, \
-    #         {"address": "4321 Cherry Lane", "name": "david ross"}], \
-    #         json.loads(get_contact_query(None, '1', 'david')[0].data))
-    #         # Setting page to 2 for prev, should be empty list
-    #         self.assertEqual([], \
-    #         json.loads(get_contact_query(None, '2', 'david')[0].data))
 
 # Set failfast to True to test one at a time
 if __name__ == '__main__':
